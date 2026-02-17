@@ -2,6 +2,8 @@
 
 import { ALL_CATEGORIES_QUERYResult, FILTER_PRODUCTS_BY_NAME_QUERYResult } from "@/sanity.types";
 import { useState } from "react";
+import { Button } from "../ui/button";
+import { PanelLeft, PanelLeftClose } from "lucide-react";
 
 interface ProductSectionProps {
   categories: ALL_CATEGORIES_QUERYResult;
@@ -29,6 +31,29 @@ const ProductSection = ({
             </span>
           )}
         </p>
+
+        {/* Filter toggle button */}
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setFiltersOpen(!filtersOpen)}
+          className="flex items-center gap-2 border-zinc-300 bg-white shadow-sm transition-all hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+          aria-label={filtersOpen ? "Hide filters" : "Show filters"}
+        >
+          {filtersOpen ? (
+            <>
+              <PanelLeftClose className="h-4 w-4" />
+              <span className="hidden sm:inline">Hide Filters</span>
+              <span className="sm:hidden">Hide</span>
+            </>
+          ) : (
+            <>
+              <PanelLeft className="h-4 w-4" />
+              <span className="hidden sm:inline">Show Filters</span>
+              <span className="sm:hidden">Filters</span>
+            </>
+          )}
+        </Button>
 
         </div>
 
